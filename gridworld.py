@@ -428,6 +428,9 @@ def parseOptions():
     if opts.manual:
       opts.pause = True
       
+    opts.agent = 'q'
+    opts.episodes = 50
+
     return opts
 
   

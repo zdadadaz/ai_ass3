@@ -15,17 +15,21 @@
 
 def question2():
   answerDiscount = 0.9
-  answerNoise = 0.2
+  answerNoise = 0
+  # if noise is 0, then the action right will not be affected by the other action out of bridge.
   return answerDiscount, answerNoise
 
 def question3a():
-  answerDiscount = 0.9
-  answerNoise = 0.2
+  answerDiscount = 0.2
+  answerNoise = 0
   answerLivingReward = 0.0
+  # noise = 0, make the action deterministic, 
+  # disctount = 0.2, mak
   return answerDiscount, answerNoise, answerLivingReward
   # If not possible, return 'NOT POSSIBLE'
 
 def question3b():
+  # not solved
   answerDiscount = 0.9
   answerNoise = 0.2
   answerLivingReward = 0.0
@@ -34,7 +38,7 @@ def question3b():
 
 def question3c():
   answerDiscount = 0.9
-  answerNoise = 0.2
+  answerNoise = 0
   answerLivingReward = 0.0
   return answerDiscount, answerNoise, answerLivingReward
   # If not possible, return 'NOT POSSIBLE'
@@ -49,7 +53,7 @@ def question3d():
 def question3e():
   answerDiscount = 0.9
   answerNoise = 0.2
-  answerLivingReward = 0.0
+  answerLivingReward = 10.0
   return answerDiscount, answerNoise, answerLivingReward
   # If not possible, return 'NOT POSSIBLE'
 

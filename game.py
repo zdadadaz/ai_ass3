@@ -370,6 +370,7 @@ class GameStateData:
     self._lose = False
     self._win = False
     self.scoreChange = 0
+    
 
   def deepCopy( self ):
     state = GameStateData( self )
