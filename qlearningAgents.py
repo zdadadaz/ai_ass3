@@ -82,13 +82,24 @@ class QLearningAgent(ReinforcementAgent):
     if len(actions) == 0:
       return None
     
-    actionOut = None
     maxV = self.getQValue(state,actions[0])
-    actionOut = actions[0]
+    actionlist = []
+    actionlist.append(actions[0])
+    # actionOut = actions[0]
+    # actionOut = actions[0]
     for a in range(1,len(actions)):
-      if (maxV <= self.getQValue(state,actions[a])):
+      if maxV == self.getQValue(state,actions[a]):
+        actionlist.append(actions[a])
+
+      if (maxV < self.getQValue(state,actions[a])):
         maxV = self.getQValue(state,actions[a])
-        actionOut = actions[a]
+        actionlist = []
+        actionlist.append(actions[a])
+        # actionOut = actions[a]
+    if len(actionlist)>1:
+      actionOut = actionlist[random.randint(0,len(actionlist)-1)]
+    else:
+      actionOut = actionlist[0]
 
     return actionOut
     
@@ -114,7 +125,8 @@ class QLearningAgent(ReinforcementAgent):
     if util.flipCoin(self.epsilon):
       return random.choice(legalActions)
     else:
-      return self.getPolicy(state)
+      pv = self.getPolicy(state)
+      return pv
   
   def update(self, state, action, nextState, reward):
     """
@@ -184,25 +196,23 @@ class ApproximateQAgent(PacmanQAgent):
       where * is the dotProduct operator
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
-    # features = self.featExtractor.getFeatures(state,action)
-    # qvalue = 0
-    # for f in features:
-    #     qvalue += features[f] * self.weights[f]
+    features = self.featExtractor.getFeatures(state,action)
+    qvalue = 0
+    for f in features:
+      qvalue += features[f] * self.weights[f]
 
-    # return qvalue
+    return qvalue
 
   def update(self, state, action, nextState, reward):
     """
        Should update your weights based on transition  
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
-
-    # Qs = reward + self.gamma * self.getValue(nextState) - self.getQValue(state,action)
-    # features = self.featExtractor.getFeatures(state,action)
-    # for f in features:
-      # self.weights[f] = self.weights[f] + (self.alpha * features[f] * Qs)
+    
+    correction = reward + self.gamma * self.getValue(nextState) - self.getQValue(state,action)
+    features = self.featExtractor.getFeatures(state,action)
+    for f in features:
+      self.weights[f] = self.weights[f] + (self.alpha * features[f] * correction)
 
   def final(self, state):
     "Called at the end of each game."

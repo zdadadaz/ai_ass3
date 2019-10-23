@@ -659,8 +659,12 @@ if __name__ == '__main__':
 
   > python pacman.py --help
   """
-  inarg = ['-p', 'PacmanQAgent', '-x', '2000', '-n', '2010', '-l', 'smallGrid']
+  # inarg = ['-p', 'PacmanQAgent', '-x', '2000', '-n', '2010', '-l', 'smallGrid']
+  # inarg = ['-p', 'ApproximateQAgent', '-x', '2000', '-n', '2010', '-l', 'smallGrid']
+  inarg = ['-p', 'ApproximateQAgent', '-a', 'extractor=SimpleExtractor', '-x', '50', '-n', '60', '-l', 'mediumGrid']
+  # inarg = ['-p', 'ApproximateQAgent', '-a', 'extractor=SimpleExtractor', '-x', '50', '-n', '60', '-l', 'mediumClassic']
   args = readCommand( inarg ) # Get game components based on input
+  # print(sys.argv[1:])
   # args = readCommand( sys.argv[1:] ) # Get game components based on input
   runGames( **args )
   

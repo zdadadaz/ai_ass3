@@ -428,8 +428,19 @@ def parseOptions():
     if opts.manual:
       opts.pause = True
       
-    opts.agent = 'q'
-    opts.episodes = 50
+    # opts.agent = 'value'
+    # opts.iters = 5
+
+    # opts.learningRate =0.2
+    # opts.iters = 3
+    
+    # opts.agent = 'q'
+    # opts.episodes = 50
+    # opts.grid = 'BridgeGrid'
+    # opts.noise = 0
+    
+    # opts.epsilon = 0
+    # opts.discount = 0.9
 
     return opts
 
