@@ -10,6 +10,10 @@ import mdp, util
 
 from learningAgents import ValueEstimationAgent
 
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-whitegrid')
+import numpy as np
+
 class ValueIterationAgent(ValueEstimationAgent):
   """
       * Please read learningAgents.py before reading this.*
@@ -36,11 +40,13 @@ class ValueIterationAgent(ValueEstimationAgent):
     self.iterations = iterations
     self.values = util.Counter() # A Counter is a dict with default 0
      
+    # avg_arr = []
     for i in range(self.iterations):
       tmp_value = util.Counter()
       states = mdp.getStates()
       # batch
       # store all value in tmp_value, then update after all states are updated.
+      # avg_arr_tmp = []
       for st in states:
         if self.mdp.isTerminal(st):
           tmp_value[st] = 0
@@ -100,7 +106,6 @@ class ValueIterationAgent(ValueEstimationAgent):
       vs= []
       for act in actions:
         vs.append(self.getQValue(state,act))
-        # vs.append(self.calculate_Q(state,act))
       maxVs = max(vs)
       return maxVs
 

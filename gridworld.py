@@ -419,6 +419,8 @@ def parseOptions():
       print('## Disabling Agents in Manual Mode (-m) ##')
       opts.agent = None
 
+    # opts.textDisplay = True
+
     # MANAGE CONFLICTS
     if opts.textDisplay or opts.quiet:
     # if opts.quiet:      

@@ -95,9 +95,10 @@ class QLearningAgent(ReinforcementAgent):
         maxV = self.getQValue(state,actions[a])
         actionlist = []
         actionlist.append(actions[a])
-        # actionOut = actions[a]
+
     if len(actionlist)>1:
       actionOut = actionlist[random.randint(0,len(actionlist)-1)]
+      # actionOut = actionlist[-1]
     else:
       actionOut = actionlist[0]
 
